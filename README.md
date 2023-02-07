@@ -19,7 +19,7 @@ API - CRUD using JWT and Prisma like ORM, user POSTS
 git clone https://github.com/rafeldev/CRUD-JWT-prisma-nodejs-mysql.git
 ```
 
-2. **Install dependencies**: 
+2. **Install dependencies (node v14.21.0)**: 
 ```
 npm install
 ```
