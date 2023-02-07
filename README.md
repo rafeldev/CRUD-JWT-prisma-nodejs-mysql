@@ -1,6 +1,6 @@
 # CRUD-JWT-prisma-nodejs-mysql
 
-API - CRUD using JWT and Prisma like ORM, user POSTS
+CRUD using JWT and Prisma like ORM, user POSTS
 
 ## Built with 🛠️
 
