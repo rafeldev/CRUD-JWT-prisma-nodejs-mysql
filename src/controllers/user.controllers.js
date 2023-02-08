@@ -1,13 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { compare } from "bcrypt";
-import jwt from "jsonwebtoken";
+import { generateToken } from "../midlewares/token.midleware.js";
+
 import dotenv from "dotenv";
 
 dotenv.config();
 // creamos una nueva instancia de prisma client
 const prisma = new PrismaClient();
-
-const SECRET = process.env.SECRET;
 
 export const createUser = async (req, res) => {
   try {
@@ -94,33 +92,3 @@ export const login = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-
-//funcion para generar el token
-function generateToken(user) {
-  const options = {
-    expiresIn: "5min",
-  };
-  return jwt.sign(user, SECRET, options);
-}
-
-//funcion para verificar el token
-export function verifyToken(req, res, next) {
-  const token = req.headers["authorization"] || req.query.token;
-  if (!token) {
-    return res
-      .status(401)
-      .json({ status: 401, message: "No autorizado, token no encontrado" });
-  }
-
-  //verificamos el token
-  return jwt.verify(token, SECRET, (err, user) => {
-    if (err) {
-      return res
-        .status(401)
-        .json({ status: 401, message: "No autorizado, token no valido" });
-    } else {
-      req.user = user;
-      return next();
-    }
-  });
-}

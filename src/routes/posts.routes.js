@@ -8,7 +8,7 @@ import {
 } from "../controllers/posts.controllers.js";
 
 //midlewares
-import { verifyToken } from "../controllers/user.controllers.js";
+import { verifyToken } from "../midlewares/token.midleware.js";
 
 const router = Router();
 
