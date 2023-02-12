@@ -14,7 +14,7 @@ export function generateToken(user) {
   };
   return jwt.sign(user, SECRET, options);
 }
-
+ 
 //funcion para verificar el token
 export function verifyToken(req, res, next) {
   const token = req.headers["authorization"] || req.query.token;

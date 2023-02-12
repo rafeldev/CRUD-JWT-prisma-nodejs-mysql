@@ -14,8 +14,8 @@ const router = Router();
 
 //rutas
 router.get("/posts", verifyToken, getPosts);
-router.post("/posts", createPost);
-router.put("/posts/:id", updatePost);
-router.delete("/posts/:id", deletePost);
+router.post("/posts", verifyToken, createPost);
+router.put("/posts/:id", verifyToken, updatePost);
+router.delete("/posts/:id", verifyToken, deletePost);
 
 export default router;
